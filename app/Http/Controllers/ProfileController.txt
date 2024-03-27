@@ -1,0 +1,89 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreProfileRequest;
+use App\Http\Requests\UpdateProfileRequest;
+use App\Models\Profile;
+
+class ProfileController extends Controller
+{
+    protected $profile;
+
+    public function __construct(Profile $profile)
+    {
+        $this->profile = $profile;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreProfileRequest $request)
+    {
+        Profile::create([
+            'user_id' => auth()->user()->id,
+            'description' => $request->description,
+            'position' => $request->position,
+            'github' => $request->github,
+            'linkedin' => $request->linkedin,
+            'instagram' => $request->instagram,
+            'twitter' => $request->twitter
+        ]);
+        return response()->json([
+            'status' => true,
+            'message' => 'Profile created successfully!'
+        ], 201);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show()
+    {
+        // Profile check
+        $profile = Profile::where("user_id", auth()->user()->id)->first();
+
+        // Find user related
+        $user = $profile->user;
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Profile information',
+            'data' => $profile,
+            'id' => auth()->user()->id
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateProfileRequest $request)
+    {
+        // Finding profile by instance user_id
+        $profile = Profile::find(auth()->user()->id);
+
+        // Save new data
+        $profile->fill($request->all());
+        $profile->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Profile updated successfully!'
+        ], 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy()
+    {
+        // Finding profile by instance user_id
+        $profile = Profile::find(auth()->user()->id);
+        $profile->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Profile deleted successfully!'
+        ], 200);
+    }
+}
