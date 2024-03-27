@@ -62,10 +62,20 @@ class TaskController extends Controller
         ], 200);
     }
 
-    // Update the specified task in storage ["id", "title", "description", "status"]
+    // Update the specified task in storage
     public function update(UpdateTaskRequest $request)
     {
-        // 
+        // Finding task by id
+        $task = Task::find($request->id);
+
+        // Save data ["title", "description", "status"]
+        $task->fill($request->all());
+        $task->save();
+
+        return response()->json([
+            "status" => true,
+            "data" => $task
+        ], 201);
     }
 
     // Remove the specified task from storage by id.
