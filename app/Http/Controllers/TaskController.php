@@ -75,12 +75,19 @@ class TaskController extends Controller
         return response()->json([
             "status" => true,
             "data" => $task
-        ], 201);
+        ], 200);
     }
 
     // Remove the specified task from storage by id.
-    public function destroy()
+    public function destroy(Request $request)
     {
-        //
+        // Finding task by id
+        $task = Task::find($request->get('id'));
+        $task->delete();
+        
+        return response()->json([
+            "status" => true,
+            "message" => "Task deleted successfully"
+        ], 202);
     }
 }
