@@ -21,7 +21,13 @@ class TaskController extends Controller
     // Display a listing of the tasks.
     public function index(Request $request)
     {
-        //
+        // Listing all tasks
+        $task = Task::get();
+
+        return response()->json([
+            "status" => true,
+            "data" => $task,
+        ], 200);
     }
 
     // Store a newly created task in storage
@@ -49,7 +55,7 @@ class TaskController extends Controller
 
         // Find user related
         $user = $task->user;
-        
+
         return response()->json([
             "status" => true,
             "data" => $task,
@@ -59,7 +65,7 @@ class TaskController extends Controller
     // Update the specified task in storage ["id", "title", "description", "status"]
     public function update(UpdateTaskRequest $request)
     {
-        //
+        // 
     }
 
     // Remove the specified task from storage by id.
