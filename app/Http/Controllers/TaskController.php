@@ -37,14 +37,23 @@ class TaskController extends Controller
 
         return response()->json([
             "status" => true,
-            "data" => $task
-        ]);
+            "data" => $task,
+        ], 201);
     }
 
     // Display the specified task by id.
-    public function show()
+    public function show(Request $request)
     {
         // search by id
+        $task = Task::find($request->get('id'));
+
+        // Find user related
+        $user = $task->user;
+        
+        return response()->json([
+            "status" => true,
+            "data" => $task,
+        ], 200);
     }
 
     // Update the specified task in storage ["id", "title", "description", "status"]
