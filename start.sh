@@ -8,3 +8,4 @@ php artisan key:generate
 
 sudo chmod -R 775 storage/logs
 
+php artisan serve

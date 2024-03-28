@@ -59,6 +59,7 @@ Execute o script:
 ./start.sh
 ```
 
+
 #### Windows
 
 Abra o powershell no diretório de preferência e clone o repositório:
@@ -67,7 +68,7 @@ Abra o powershell no diretório de preferência e clone o repositório:
 git clone https://github.com/CLucasrodrigues22/CMS-Teste.git
 ```
 
-Ainda no terminal, entre no diretório clonado:
+Ainda na mesma janela do powershell, entre no diretório clonado:
 
 ```
 cd /ApiCmsTask
