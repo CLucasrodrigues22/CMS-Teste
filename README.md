@@ -1,20 +1,19 @@
 # Api-cms-task
 
-Api-cms-task é uma aplicação genérica que permita aos usuários criar, ler, atualizar e excluir tarefas em geral com título, descrição e status da mesma.
+Api-cms-task é uma aplicação genérica que permite aos usuários manipular totalmente tarefas em geral com título, descrição e status da mesma.
 
-## 🚀 Começando
+## Começando
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-### 📋 Pré-requisitos
+### Pré-requisitos
 
 Tecnologias necessárias (recomendado):
 
-```
-- Composer ^2.7.2 
-- PHP ^8.2
-- MySql ^8
-```
+* Composer ^2.7.2 
+* PHP ^8.2
+* MySql ^8
+
 
 ### 🔧 Instalação
 
