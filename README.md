@@ -59,14 +59,36 @@ Execute o script:
 ./start.sh
 ```
 
+#### Windows
 
-### 🔩 Analise os testes de ponta a ponta
-
-Explique que eles verificam esses testes e porquê.
+Abra o powershell no diretório de preferência e clone o repositório:
 
 ```
-Dar exemplos
+git clone https://github.com/CLucasrodrigues22/CMS-Teste.git
 ```
+
+Ainda no terminal, entre no diretório clonado:
+
+```
+cd /ApiCmsTask
+```
+
+Crie um arquivo .env para o ambiente:
+
+```
+cp .env.example .env
+```
+
+No arquivo .env, configure as seguintes variáveis de acordo com seu ambiente:
+
+```
+DB_DATABASE=(nome do banco)
+DB_USERNAME=(usuário do banco)
+DB_PASSWORD=(senha do banco)
+```
+
+Na raiz do repositório, clique duas vezes no arquivo **start.bat** para configurar o ambiente
+
 
 ### ⌨️ E testes de estilo de codificação
 
