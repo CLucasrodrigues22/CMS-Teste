@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('title', 255);
+            $table->text('description');
+            $table->integer('status');
             $table->timestamps();
+            //foreign key (constraints)
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -16,7 +16,7 @@ Route::group(
         Route::get("logout", [AuthController::class, "logout"]);
         Route::get("profile", [AuthController::class, "profile"]);
         // Task routes
-        Route::get("tasks", [AuthController::class, "index"]);
+        Route::get("tasks", [TaskController::class, "index"]);
         Route::post("task-create", [TaskController::class, "store"]);
         Route::get("task-info", [TaskController::class, "show"]);
         Route::put("task-update", [TaskController::class, "update"]);
