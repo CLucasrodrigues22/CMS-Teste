@@ -133,6 +133,12 @@ return [
             'level' => 'debug',
         ],
 
+        'error_file' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/error.log'),
+            'level' => 'error',
+        ],
+
     ],
 
 ];
