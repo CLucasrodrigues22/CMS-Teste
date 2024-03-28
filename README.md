@@ -17,9 +17,11 @@ Tecnologias necessárias (recomendado):
 
 ### 🔧 Instalação
 
-Depois de conferir os requisitos, chegou a hora da instalaçaõ da API
+Depois de conferir os requisitos, chegou a hora da instalação da API
 
-Abra o terminal no diretorio de preferencia e clone o repositorio:
+#### Ubuntu/Debian
+
+Abra o terminal no diretório de preferência e clone o repositório:
 
 ```
 git clone https://github.com/CLucasrodrigues22/CMS-Teste.git
@@ -28,14 +30,35 @@ git clone https://github.com/CLucasrodrigues22/CMS-Teste.git
 Ainda no terminal, entre no diretório clonado:
 
 ```
-cd ApiCmsTask
+cd /ApiCmsTask
 ```
 
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
+Crie um arquivo .env para o ambiente:
 
-## ⚙️ Executando os testes
+```
+cp .env.example .env
+```
 
-Explicar como executar os testes automatizados para este sistema.
+No arquivo .env, configure as seguintes variáveis de acordo com seu ambiente:
+
+```
+DB_DATABASE=(nome do banco)
+DB_USERNAME=(usuário do banco)
+DB_PASSWORD=(senha do banco)
+```
+
+Torne o script de configuração executavél:
+
+```
+chmod +x start.sh
+```
+
+Execute o script:
+
+```
+./start.sh
+```
+
 
 ### 🔩 Analise os testes de ponta a ponta
 
