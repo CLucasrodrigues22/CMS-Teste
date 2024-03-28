@@ -1,4 +1,4 @@
-# Api-cms-task
+# ApiCmsTask
 
 Api-cms-task é uma aplicação genérica que permite aos usuários manipular totalmente tarefas em geral com título, descrição e status da mesma.
 
@@ -12,23 +12,23 @@ Tecnologias necessárias (recomendado):
 
 * Composer ^2.7.2 
 * PHP ^8.2
-* MySql ^8
+* MySql ^8.0
 
 
 ### 🔧 Instalação
 
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
+Depois de conferir os requisitos, chegou a hora da instalaçaõ da API
 
-Diga como essa etapa será:
-
-```
-Dar exemplos
-```
-
-E repita:
+Abra o terminal no diretorio de preferencia e clone o repositorio:
 
 ```
-Até finalizar
+git clone https://github.com/CLucasrodrigues22/CMS-Teste.git
+```
+
+Ainda no terminal, entre no diretório clonado:
+
+```
+cd ApiCmsTask
 ```
 
 Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
