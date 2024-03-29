@@ -1,6 +1,10 @@
-# ApiCmsTask
+# Laravel-Task
 
-Api-cms-task é uma aplicação genérica que permite aos usuários manipular totalmente tarefas em geral com título, descrição e status da mesma.
+[![licence mit](https://img.shields.io/badge/licence-MIT-blue.svg)](./LICENSE)
+
+
+Laravel-Task é um sistema que permite aos usuários criar, gerenciar e acompanhar tarefas ou atividades que precisam ser realizadas. Essa aplicação pode ser útil em uma variedade de contextos, como gestão de projetos, lista de afazeres pessoais, acompanhamento de prazos, entre outros.
+
 
 ### Pré-requisitos
 
