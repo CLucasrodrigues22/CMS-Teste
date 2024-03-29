@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title', 255);
             $table->text('description');
-            $table->integer('status');
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
             //foreign key (constraints)
             $table->foreign('user_id')->references('id')->on('users');
