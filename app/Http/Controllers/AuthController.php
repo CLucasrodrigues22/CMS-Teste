@@ -8,53 +8,74 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\UserRepository;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
     // POST [name, email, password]
     public function register(StoreAuthRequest $request)
     {
-        User::create([
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => bcrypt($request->password)
-        ]);
-        return response()->json([
-            'status' => true,
-            'message' => 'User created successfully!'
-        ], 201);
+        try {
+            User::create([
+                "name" => $request->name,
+                "email" => $request->email,
+                "password" => bcrypt($request->password)
+            ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'User created successfully!'
+            ], 201);
+        } catch (\Exception $e) {
+            // Log with details
+            Log::channel('error_file')->error('Error: ' . $e->getMessage());
+
+            return response()->json([
+                "status" => false,
+                "message" => "Ocorreu um erro ao registrar o usuário, tente novamente mais tarde!",
+            ], 500);
+        }
     }
 
     // POST [email, password]
     public function login(LoginRequest $request)
     {
-        // email check
-        $user = User::where("email", $request->email)->first();
+        try {
+            // email check
+            $user = User::where("email", $request->email)->first();
 
-        if (!empty($user)) {
-            // User check
-            if (Hash::check($request->password, $user->password)) {
-                // Password matched
-                $token = $user->createToken('token')->plainTextToken;
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User logged in!',
-                    'token' => $token,
-                    'data' => []
-                ], 200);
+            if (!empty($user)) {
+                // User check
+                if (Hash::check($request->password, $user->password)) {
+                    // Password matched
+                    $token = $user->createToken('token')->plainTextToken;
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Sessão iniciada com sucesso!',
+                        'token' => $token,
+                        'data' => []
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'Endereço de e-mail ou senha incorreto!',
+                        'data' => []
+                    ], 200);
+                }
             } else {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Please, check your e-mail address or password!',
+                    'message' => 'Endereço de e-mail ou senha incorreto!',
                     'data' => []
                 ], 200);
             }
-        } else {
+        } catch (\Exception $e) {
+            // Log with details
+            Log::channel('error_file')->error('Error: ' . $e->getMessage());
+
             return response()->json([
-                'status' => false,
-                'message' => 'Please, check your e-mail address or password!',
-                'data' => []
-            ], 200);
+                "status" => false,
+                "message" => "Ocorreu um erro no login, tente novamente mais tarde!",
+            ], 500);
         }
     }
 
