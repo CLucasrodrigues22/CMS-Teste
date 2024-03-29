@@ -8,4 +8,6 @@ php artisan key:generate
 
 sudo chmod -R 775 storage/logs
 
-php artisan serve
+php artisan serve &
+
+gnome-terminal -- npm install && npm run build && npm start

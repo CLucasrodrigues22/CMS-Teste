@@ -71,7 +71,7 @@ class TaskController extends Controller
     public function show(Request $request)
     {
         try {
-            // search by id
+            // Listing task by id
             $task = $this->task->with('user')->find($request->get('id'));
 
             return response()->json([

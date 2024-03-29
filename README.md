@@ -10,30 +10,20 @@ Tecnologias necessárias (recomendado):
 * PHP ^8.2
 * MySql ^8.0
 * NodeJS ^20.12
+* NPM ^10.5
 
 ### 🔧 Instalação
 
 Depois de conferir os requisitos, chegou a hora da implantação da API e Front-end
 
-## 📦 Implantação da API
+## 📦 Implantação da Aplicação
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-#### Ubuntu/Debian
+#### Instalando dependencias e subindo servidor
 
-Abra o terminal no diretório de preferência e clone o repositório:
 
-```
-git clone https://github.com/CLucasrodrigues22/CMS-Teste.git
-```
-
-Ainda no terminal, entre no diretório clonado:
-
-```
-cd /ApiCmsTask
-```
-
-Crie um arquivo .env para o ambiente:
+Abra um terminal no diretório da aplicação e crie um arquivo .env para o ambiente:
 
 ```
 cp .env.example .env
@@ -53,50 +43,8 @@ Torne o script de configuração executavél:
 chmod +x start.sh
 ```
 
-Execute o script:
+Execute o script para instalar depedências e iniciar o servidor http da API:
 
 ```
 ./start.sh
 ```
-
-
-#### Windows
-
-Abra o powershell no diretório de preferência e clone o repositório:
-
-```
-git clone https://github.com/CLucasrodrigues22/CMS-Teste.git
-```
-
-Ainda na mesma janela do powershell, entre no diretório clonado:
-
-```
-cd /ApiCmsTask
-```
-
-Crie um arquivo .env para o ambiente:
-
-```
-cp .env.example .env
-```
-
-No arquivo .env, configure as seguintes variáveis de acordo com seu ambiente:
-
-```
-DB_DATABASE=(nome do banco)
-DB_USERNAME=(usuário do banco)
-DB_PASSWORD=(senha do banco)
-```
-
-Na raiz do repositório, clique duas vezes no arquivo **start.bat** para configurar o ambiente
-
-
-### ⌨️ E testes de estilo de codificação
-
-Explique que eles verificam esses testes e porquê.
-
-```
-Dar exemplos
-```
-
-## 📦 Implantação do Front-end
