@@ -72,25 +72,23 @@ npm install && npm run dev
 ```
 
 
-## techguide.sh Site
-
 ### Estrutura do projeto
 
-- `./pages`: É a página que o Next.js usa para montar o sistema de roteamento
-- `./src/components`: São todos os pedaços primordiais de interface como componentes de formulário, `<Text>` (para qualquer texto) e o `<Box>`
-  - `<Text>`: Uma das ideias por tras do text é tematizar melhor o projeto no futuro e ele servir como um adapter para qualquer padronização de design que possamos vir a ter.
-  - `<Box>`: É nossa abstração para criar estilos, sempre use um box e **nunca crie um styled component diretamente no projeto**.
-    - Ele recebe uma prop chamada `styleSheet` e a mesma pode receber ou uma chave com nome de propriedade do CSS com seu valor, ou ao invés de o valor você pode passar um objeto com a resolução que a propriedade deve ser aplicada.
-      - **Exemplo**:
-        - `<Box styleSheet={{ color: 'red' }} />` ou `<Box styleSheet={{ color: { xs: 'red', md: 'blue' } }} />`;
-- `./src/patterns`: Patterns são todos os pedaços de interface que são menos genéricos que os componentes mas são reusados em mais de 3 lugares do projeto e fazem parte da estrutura geral dele
-- `./src/screens`: Toda screen representa uma tela do projeto, uma tela caso tenha componentes específicos inicialmente deve ter os mesmos guardados na sua própria pasta, repetindo a estrutura anterior do projeto e evitando o reuso antes do uso de fato.
+- `./app`: Contém o código-fonte da api, incluindo modelos, controladores e outros.
+- `./public`: É o ponto de entrada para a aplicação web. Os arquivos neste diretório são acessíveis publicamente.
+- `./resources`: Armazena ativos como arquivos de visualização (views), arquivos de tradução e recursos não processados como Sass ou JavaScript.
+- `./routes`: Define as rotas da api ou rodas web, especificando qual controlador e método serão chamados para um determinado end-point.
 
 ### Como me localizar no projeto?
 
-- Todas as páginas do projeto estão listadas em `./pages`
-  - Todos os `componentes` que representam as páginas estão em `./src/screens`
-    - Uma vez dentro de uma página você pode ir navegando pelos componentes para ir se encontrando e fazer a alteração que deseja
+- Todos os metodos responsáveis por tratar as requisições HTTP e coordenar as ações necessárias para processar essas requisições de cada endpoint estão em `./app/Http/Controllers`.
+- Os arquivos responsáveis por manipulação de dados no banco, etc, estão em `./app/Models`.
+- As validações de formulários para campos obrigatórios, tipo de dados, identificadores unicos estão em `./app/Http/Requests`.
+- Todas as migrations responsáveis pelas tabelas do banco estão em `./database/migrations`
+- Arquivo com os todos os endpoint da API esta localizado em `./routes/api`
+- Arquivo com as rotas de cada view esta localizado em `./routes/web`
+- Todos os elementos como formulários, lista, tabelas, entre outros elementos de interface que serão redenrizados nas viewes estão em `./resources/js/components`.
+- Todos os Elementos
 
 ### Como funciona a parte de i18n (internacionalização)?
 
