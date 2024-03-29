@@ -3,7 +3,7 @@
 [![licence mit](https://img.shields.io/badge/licence-MIT-blue.svg)](./LICENSE)
 
 
-Laravel-Task é um sistema que permite aos usuários criar, gerenciar e acompanhar tarefas ou atividades que precisam ser realizadas. Essa aplicação pode ser útil em uma variedade de contextos, como gestão de projetos, lista de afazeres pessoais, acompanhamento de prazos, entre outros.
+Laravel-Task é um sistema que permite aos usuários criar, gerenciar e acompanhar tarefas ou atividades que precisam ser realizadas. Essa aplicação pode ser útil em uma variedade de contextos, como gestão de projetos, lista de afazeres pessoais, entre outros.
 
 
 ### Pré-requisitos
