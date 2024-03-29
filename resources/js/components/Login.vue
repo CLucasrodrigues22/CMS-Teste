@@ -82,21 +82,32 @@ export default {
     login(e) {
       let url = "http://127.0.0.1:8000/api/login";
 
-      let cfg = {
-        method: "post",
-        body: new URLSearchParams({
-          email: this.email,
-          password: this.password,
-        }),
+      let data = {
+        email: this.email,
+        password: this.password,
       };
-      fetch(url, cfg)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.token) {
-            document.cookie = "token=" + data.token + ";SameSIte=Lax";
-          }
-          e.target.submit();
-        });
+
+      axios.post(url, data).then((response) => {
+        if (response.data.token) {
+          Swal.fire({
+            icon: "success",
+            title: "Sessão iniciada",
+            text: response.data.message,
+          });
+
+          document.cookie = "token=" + response.data.token + ";SameSite=Lax";
+
+          setTimeout(() => {
+            e.target.submit();
+          }, 1000);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Erro ao entrar",
+            text: response.data.message,
+          });
+        }
+      });
     },
   },
 };
