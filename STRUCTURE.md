@@ -88,7 +88,7 @@ npm install && npm run dev
 - Arquivo com os todos os endpoint da API esta localizado em `./routes/api`
 - Arquivo com as rotas de cada view esta localizado em `./routes/web`
 - Todos os elementos como formulários, lista, tabelas, entre outros elementos de interface que serão redenrizados nas viewes estão em `./resources/js/components`.
-- Todos os Elementos
+- Todos os Log de Exception ocorridos nos metodos dos controllers, estão em `./storage/logs/error-yyyy-mm-dd.log`
 
 ### Como funciona a parte de i18n (internacionalização)?
 
