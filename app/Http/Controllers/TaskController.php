@@ -24,7 +24,7 @@ class TaskController extends Controller
     {
         try {
             // Listing all tasks
-            $task = Task::get();
+            $task = $this->task->with('user')->get();
 
             return response()->json([
                 "status" => true,
@@ -49,8 +49,7 @@ class TaskController extends Controller
             $task = Task::create([
                 "user_id" => auth()->user()->id,
                 "title" => $request->title,
-                "description" => $request->description,
-                "status" => $request->status
+                "description" => $request->description
             ]);
 
             return response()->json([
@@ -73,10 +72,7 @@ class TaskController extends Controller
     {
         try {
             // search by id
-            $task = Task::find($request->get('id'));
-
-            // Find user related
-            $user = $task->user;
+            $task = $this->task->with('user')->find($request->get('id'));
 
             return response()->json([
                 "status" => true,

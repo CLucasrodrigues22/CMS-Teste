@@ -11,6 +11,32 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+// Intercept application requests
+axios.interceptors.request.use(
+    config => {
+        // Define the accept parameters for all requests
+        config.headers['Accept'] = 'application/json'
+
+        // Retrieving authorization token from cookies
+        let token = document.cookie.split(';').find(index => {
+            return index.includes('token=');
+        })
+        // Separating the token attribute by "=" to redeem only its value
+        token = token.split('=')[1];
+        token = 'Bearer ' + token;
+
+        // Define the accept and Authorization parameters for all requests
+        config.headers.Authorization = token
+
+        return config
+    },
+    error => {
+        console.log('Request error: ', error)
+        return Promise.reject(error)
+    }
+)
+
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

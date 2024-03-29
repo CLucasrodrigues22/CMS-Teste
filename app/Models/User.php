@@ -47,8 +47,8 @@ class User extends Authenticatable
     }
 
     // A user has one task
-    public function task()
+    public function tasks()
     {
-        return $this->hasOne('App\Models\Task');
+        return $this->hasMany('App\Models\Task');
     }
 }
