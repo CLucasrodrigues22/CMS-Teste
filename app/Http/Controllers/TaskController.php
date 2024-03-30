@@ -24,7 +24,7 @@ class TaskController extends Controller
     {
         try {
             // Listing all tasks
-            $task = $this->task->with('user')->where('user_id', auth()->user()->id)->get();
+            $task = $this->task->with('user')->where('user_id', auth()->user()->id)->paginate(8);
 
             return response()->json([
                 "status" => true,

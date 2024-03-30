@@ -13,7 +13,7 @@
           Nova Tarefa
         </button>
         <table-component
-          :data="tasks"
+          :data="tasks.data"
           :titles="[
             'Data de Criação',
             'Titulo',
@@ -22,6 +22,21 @@
             'Ações',
           ]"
         ></table-component>
+        <div class="row mt-5">
+          <div class="col-12 d-flex justify-content-center">
+            <paginate-component>
+              <li
+                v-for="(t, key) in tasks.links"
+                :key="key"
+                :class="t.active ? 'page-item active' : 'page-item'"
+                aria-current="page"
+                @click="pagiante(t)"
+              >
+                <a class="page-link" href="#" v-html="t.label"></a>
+              </li>
+            </paginate-component>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -198,6 +213,7 @@ export default {
   data() {
     return {
       urlBase: "http://localhost:8000/",
+      urlTask: "http://localhost:8000/api/tasks",
       id: "",
       title: "",
       description: "",
@@ -208,8 +224,13 @@ export default {
     };
   },
   methods: {
+    pagiante(t) {
+      console.log(t);
+      this.urlTask = t.url;
+      this.loadTask();
+    },
     loadTask() {
-      let url = this.urlBase + "api/tasks";
+      let url = this.urlTask;
       axios
         .get(url)
         .then((response) => {

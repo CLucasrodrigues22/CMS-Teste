@@ -36,6 +36,8 @@ import Input from './components/Input.vue';
 app.component('input-component', Input);
 import Table from './components/Table.vue';
 app.component('table-component', Table);
+import Paginate from './components/Paginate.vue';
+app.component('paginate-component', Paginate);
 
 app.config.globalProperties.$filters = {
     formatDateTime(d) {
