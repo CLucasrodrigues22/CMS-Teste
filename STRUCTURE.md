@@ -46,7 +46,7 @@ php artisan key:generate
 - Caso use algumas distro Linux, execute o comando chmod para dar permissão na criação do arquivo de Log do sistema:
 
 ```
-sudo chmod -R 775 storage/logs
+sudo chown -R 775 storage/logs
 ```
 
 - Instale as depedências do VueJS usando o NPM:

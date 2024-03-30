@@ -85,35 +85,71 @@ export default {
   },
   methods: {
     login(e) {
-      let url = "http://127.0.0.1:8000/api/login";
+      let url = "http://localhost:8000/api/login";
+      let cfg = {
+        method: "post",
 
-      let data = {
-        email: this.email,
-        password: this.password,
+        body: new URLSearchParams({
+          email: this.email,
+          password: this.password,
+        }),
       };
+      // requisições http
+      fetch(url, cfg)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.token) {
+            Swal.fire({
+              icon: "success",
+              title: "Sessão iniciada",
+              text: data.message,
+            });
+            document.cookie = "token=" + data.token + ";SameSite=Lax";
 
-      axios.post(url, data).then((response) => {
-        if (response.data.token) {
-          Swal.fire({
-            icon: "success",
-            title: "Sessão iniciada",
-            text: response.data.message,
-          });
-
-          document.cookie = "token=" + response.data.token + ";SameSite=Lax";
-
-          setTimeout(() => {
-            e.target.submit();
-          }, 1000);
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Erro ao entrar",
-            text: response.data.message,
-          });
-        }
-      });
+            setTimeout(() => {
+              e.target.submit();
+            }, 1000);
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Erro ao entrar",
+              text: data.message,
+            });
+          }
+        });
     },
   },
+  // methods: {
+  //   login(e) {
+  //     let url = "http://127.0.0.1:8000/api/login";
+
+  //     let data = {
+  //       email: this.email,
+  //       password: this.password,
+  //     };
+
+  //     axios.post(url, data).then((response) => {
+  //       if (response.data.token) {
+  //         Swal.fire({
+  //           icon: "success",
+  //           title: "Sessão iniciada",
+  //           text: response.data.message,
+  //         });
+
+  //         document.cookie = "token=" + response.data.token + ";SameSite=Lax";
+
+  //         setTimeout(() => {
+  //           e.target.submit();
+  //         }, 1000);
+  //       } else {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "Erro ao entrar",
+  //           text: response.data.message,
+  //         });
+  //       }
+  //     });
+  //   },
+  // },
 };
 </script>
