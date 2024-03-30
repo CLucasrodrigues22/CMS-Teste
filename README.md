@@ -1,7 +1,7 @@
 # Laravel-Task
 
 [![licence mit](https://img.shields.io/badge/licence-MIT-blue.svg)](./LICENSE)
-[Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+(https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 
 Laravel-Task é um sistema que permite aos usuários criar, gerenciar e acompanhar tarefas ou atividades que precisam ser realizadas. Essa aplicação pode ser útil em uma variedade de contextos, como gestão de projetos, lista de afazeres pessoais, entre outros.
