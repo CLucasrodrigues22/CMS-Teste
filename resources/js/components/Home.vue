@@ -220,7 +220,7 @@ export default {
         });
     },
     storeTask() {
-      // send ["title", "description"] to API
+      // Send ["title", "description"] to API
       let url = this.urlBase + "api/task-create";
       let formData = new FormData();
       formData.append("title", this.title);
@@ -239,7 +239,7 @@ export default {
         .catch((errors) => {
           Swal.fire(
             "Erro!",
-            `Ocorreu o seguinte erro: ${errors.response}.`,
+            `Ocorreu o seguinte erro: ${errors.response.data.message}.`,
             "error"
           );
         });
@@ -260,12 +260,11 @@ export default {
           this.loadTask();
         })
         .catch((errors) => {
-          // Swal.fire(
-          //   "Erro!",
-          //   `Ocorreu um erro na edição: ${errors.response.data.message}`,
-          //   "error"
-          // );
-          console.log(errors.response.data);
+          Swal.fire(
+            "Erro!",
+            `Ocorreu um erro na edição: ${errors.response.data.message}`,
+            "error"
+          );
         });
     },
     deleteTask(item) {

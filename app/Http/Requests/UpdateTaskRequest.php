@@ -27,4 +27,14 @@ class UpdateTaskRequest extends FormRequest
             'status' => 'required|int|in:1,2,3',
         ];
     }
+
+    // Translated validation messages
+    public function messages()
+    {
+        return [
+            'title.required' => 'O campo Titulo é obrigatório.',
+            'title.max' => 'O campo senha deve ter no máximo :max caracteres.',
+            'description.required' => 'O campo Descrição é obrigatório.',
+        ];
+    }
 }

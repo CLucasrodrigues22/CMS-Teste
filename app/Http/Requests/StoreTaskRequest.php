@@ -26,4 +26,14 @@ class StoreTaskRequest extends FormRequest
             'description' => 'required',
         ];
     }
+
+    // Translated validation messages
+    public function messages()
+    {
+        return [
+            'title.required' => 'O campo Titulo é obrigatório.',
+            'title.max' => 'O campo senha deve ter no máximo :max caracteres.',
+            'description.required' => 'O campo Descrição é obrigatório.',
+        ];
+    }
 }

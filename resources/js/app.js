@@ -24,10 +24,10 @@ const store = createStore({
 
 app.use(store)
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
 import Login from './components/Login.vue';
 app.component('login-component', Login);
+import Register from './components/Register.vue';
+app.component('register-component', Register);
 import Home from './components/Home.vue';
 app.component('home-component', Home);
 import Modal from './components/Modal.vue';

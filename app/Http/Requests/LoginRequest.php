@@ -23,7 +23,19 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:8',
+        ];
+    }
+
+    // Translated validation messages
+    public function messages()
+    {
+        return [
+            'email.required' => 'O campo email é obrigatório.',
+            'email.email' => 'O campo email deve ser um endereço de email válido.',
+            'password.required' => 'O campo senha é obrigatório.',
+            'password.string' => 'O campo senha deve ser uma string.',
+            'password.min' => 'O campo senha deve ter no mínimo :min caracteres.',
         ];
     }
 }

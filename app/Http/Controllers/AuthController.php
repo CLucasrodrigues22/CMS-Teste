@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAuthRequest;
-use App\Http\Requests\UpdateAuthRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
-use App\Repositories\UserRepository;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
@@ -16,15 +15,15 @@ class AuthController extends Controller
     public function register(StoreAuthRequest $request)
     {
         try {
-            User::create([
+            $user = User::create([
                 "name" => $request->name,
                 "email" => $request->email,
                 "password" => bcrypt($request->password)
             ]);
             return response()->json([
                 'status' => true,
-                'message' => 'User created successfully!'
-            ], 201);
+                'message' => 'Usuário criado com sucesso!'
+            ], 201)->header('Access-Control-Allow-Origin', '*');
         } catch (\Exception $e) {
             // Log with details
             Log::channel('error_file')->error('Error: ' . $e->getMessage());
@@ -32,7 +31,7 @@ class AuthController extends Controller
             return response()->json([
                 "status" => false,
                 "message" => "Ocorreu um erro ao registrar o usuário, tente novamente mais tarde!",
-            ], 500);
+            ], 500)->header('Access-Control-Allow-Origin', '*');
         }
     }
 
@@ -53,20 +52,20 @@ class AuthController extends Controller
                         'message' => 'Sessão iniciada com sucesso!',
                         'token' => $token,
                         'data' => []
-                    ], 200);
+                    ], 200)->header('Access-Control-Allow-Origin', '*');
                 } else {
                     return response()->json([
                         'status' => false,
                         'message' => 'Endereço de e-mail ou senha incorreto!',
                         'data' => []
-                    ], 200);
+                    ], 200)->header('Access-Control-Allow-Origin', '*');
                 }
             } else {
                 return response()->json([
                     'status' => false,
                     'message' => 'Endereço de e-mail ou senha incorreto!',
                     'data' => []
-                ], 200);
+                ], 200)->header('Access-Control-Allow-Origin', '*');
             }
         } catch (\Exception $e) {
             // Log with details
@@ -75,7 +74,7 @@ class AuthController extends Controller
             return response()->json([
                 "status" => false,
                 "message" => "Ocorreu um erro no login, tente novamente mais tarde!",
-            ], 500);
+            ], 500)->header('Access-Control-Allow-Origin', '*');
         }
     }
 
@@ -90,7 +89,7 @@ class AuthController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Profile information',
+            'message' => 'Informações do perfil',
             'id' => auth()->user()->id,
             'data' => $userData
         ]);
@@ -102,7 +101,7 @@ class AuthController extends Controller
         auth()->user()->tokens()->delete();
         return response()->json([
             'status' => true,
-            'message' => 'User logged out!',
+            'message' => 'Sessão finalizada!',
             'data' => []
         ]);
     }
