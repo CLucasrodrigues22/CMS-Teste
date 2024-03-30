@@ -23,7 +23,10 @@
           ]"
         ></table-component>
         <div class="row mt-5">
-          <div class="col-12 d-flex justify-content-center">
+          <div
+            class="col-12 d-flex justify-content-center"
+            v-if="Object.keys(this.tasks.data).length > 0"
+          >
             <paginate-component>
               <li
                 v-for="(t, key) in tasks.links"
@@ -225,7 +228,6 @@ export default {
   },
   methods: {
     pagiante(t) {
-      console.log(t);
       this.urlTask = t.url;
       this.loadTask();
     },
@@ -237,7 +239,11 @@ export default {
           this.tasks = response.data.data;
         })
         .catch((errors) => {
-          console.log(errors.response);
+          Swal.fire(
+            "Erro!",
+            `Ocorreu um erro ao tentar carregar as tarefas, tente novamente mais tarde.`,
+            "error"
+          );
         });
     },
     storeTask() {
