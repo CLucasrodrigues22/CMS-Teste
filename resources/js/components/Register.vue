@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     register(e) {
-      let url = "https://localhost:8000/api/register";
+      let url = "http://localhost:8000/api/register";
 
       let cfg = new FormData();
       cfg.append("name", this.name);
@@ -130,7 +130,7 @@ export default {
             text: response.data.message,
           });
           setTimeout(() => {
-            window.location.href = "https://127.0.0.1:8000/login";
+            window.location.href = "http://127.0.0.1:8000/login";
           }, 1000);
         })
         .catch((errors) => {

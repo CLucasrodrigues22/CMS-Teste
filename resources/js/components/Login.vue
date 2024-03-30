@@ -61,7 +61,7 @@
                 </button>
                 <p class="small fw-bold mt-2 pt-1 mb-0">
                   Não tem uma conta?
-                  <a href="https://127.0.0.1:8000/register" class="link-dark"
+                  <a href="http://127.0.0.1:8000/register" class="link-dark"
                     >Cadastre-se</a
                   >
                 </p>
@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     login(e) {
-      let url = "https://localhost:8000/api/login";
+      let url = "http://localhost:8000/api/login";
 
       let cfg = new FormData();
       cfg.append("email", this.email);

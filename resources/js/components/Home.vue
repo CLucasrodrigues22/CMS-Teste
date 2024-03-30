@@ -212,8 +212,8 @@
 export default {
   data() {
     return {
-      urlBase: "https://localhost:8000/",
-      urlTask: "https://localhost:8000/api/tasks",
+      urlBase: "http://localhost:8000/",
+      urlTask: "http://localhost:8000/api/tasks",
       id: "",
       title: "",
       description: "",
